@@ -1,0 +1,39 @@
+Problem description:
+
+I have a input vector with 8 features for a person assigned to a output.
+There are 768 persons, so my input space is 768 x 8. 
+As there is only outcome, this is a classification problem involving two possible outputs: no diabetic or diabetic.
+Then, the problem consists in a training of a single perceptron. In this code, 0 means no diabetic and 1 means diabetic.
+To train a single neuron, i have to through each line of the input space and validate if it's dot product with the weight spaces validate the outcome. Then, i update each weigth with the learning rule, given by: w <- w - eta*(y-t)*x. NOtice that if the outcome is correct, then the weight remains the same (we add zero to it). If our network returns a false positive, then we decrease the weight, so the neuron input becomes closer to it's threshold. The same happens to the opposite case. 
+
+Note: The rows wich number isn't a multiple of three will be the training set (512 rows). The rest will be the test set (256 rows).
+
+-----------------------
+
+* Open text file ***** LEARN HOW TO DO THIS
+* Declare the learning rate
+* Declare input matrix (1 x 8)
+* For each row of the training set (512 rows):
+    * Assign each number sepparated by a comma to a vector element, creating a 1x8 vector.
+    * Append this vector to the vector space.
+
+#########
+Perception training function
+
+
+* Declare a weight vector (1 x 8)
+* Assign to each element of the weight vector a small random number
+* For N iterations
+    * For each input vector (input matrix row)
+        * Calculate the neuron input
+        * Update each weight vector component through the learning rule
+
+########
+
+# At this point, the weight vector shoud be well calibrated, and will classificate correctly most of the input vectors.
+
+* For each row of the test set (256 rows):
+    * Assign each number sepparated by a comma to a vector element, creating a 1x8 vector.
+    * Compute the dot product between this vector and the trained weight vector;
+    * Compute the neuron output
+    * Compare with the target
