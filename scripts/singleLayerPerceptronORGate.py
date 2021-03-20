@@ -1,8 +1,10 @@
+#---------------------------------------------------------------------#
 # Single-layer Perceptron neural network model learning a OR function
-# Artur Amaral
-# 26/02/2020
+# Author: Artur Amaral
+# Initial Date: 26/02/2021
+#---------------------------------------------------------------------#
 
-#########################
+#-----------------------------------------------------------------------------------------
 # Model:
 # 
 # 1 neuron -> It's activation represents the output of the logic function
@@ -12,21 +14,26 @@
 #                     different neurons in the case that the input vector is full of zeros
 # neuron activation function: 
 # If neuron receives a non-negative value, it fires.
-#
-#########################
+#-----------------------------------------------------------------------------------------
 
+#----------------------------------------------------
 # Initializing the weights with small random values
+#----------------------------------------------------
 
 w = [0.05,-0.02,0.02]
 
+#----------------------------------------------------
 # Initializing the input set
+#----------------------------------------------------
 
 x = [ [-1,0,0],
       [-1,0,1],
       [-1,1,0],
       [-1,1,1] ]
 
+#----------------------------------------------------
 # Initializing the target set and the output variable
+#----------------------------------------------------
 
 t = [ 0,
       1,
@@ -44,7 +51,6 @@ for i in range(numberOfIteractions):
     #print("Iteraction ", end='')
     #print(i)
 
-
     for inputVectorCount in range( len(x) ):
 
         #print("\tinputVectorCount ", end='')
@@ -53,6 +59,7 @@ for i in range(numberOfIteractions):
         neuronValue = 0
 
         for featureCount in range( len(x[0]) ):
+
             #print("\t\tFeatureCount ", end='')
             #print(featureCount)
     
@@ -65,8 +72,16 @@ for i in range(numberOfIteractions):
         
         error = y - t[inputVectorCount]
         
+#----------------------------------------------------
+# Correcting the weigth wuth the learning rule
+#----------------------------------------------------
+
         for weightCount in range( len(w) ):
             w[weightCount] -= learningRate*error*x[inputVectorCount][weightCount]
+
+#----------------------------------------------------
+# Printing the calibrated weights
+#----------------------------------------------------
 
 print("Network trained!")
 print("The weight values are:")
@@ -78,6 +93,11 @@ print("w2 = ", end = "")
 print(w[2], end = "\n\n")
 
 print("Recall:", end = "\n")
+
+
+#--------------------------------------------------------
+# Recall: Compute the output with the calculated weigths
+#--------------------------------------------------------
 
 for inputVectorCount in range( len(x) ):
 
